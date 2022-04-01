@@ -49,4 +49,13 @@ public class CartPageTests extends BaseTest {
                 .checkThatHeaderButtonBubbleHave("2", cartButton, MainPage.class)
                 .clickButton(cartButton, CartPage.class);
     }
+
+//    @Test
+//    @Order(2)
+//    @DisplayName("Добавление в корзину два товара")
+//    void sdfdsfsdfsdfsdfsdfsdfsdfsddfffffffffffffffffffffffffffffffffffff() {
+//        mainPage.scrollEachBlock(MostViewedBlock.class)
+//                .checkThatMostViewedBlockVisible()
+//                .collectMostViewedProductsToMap()
+//    }
 }

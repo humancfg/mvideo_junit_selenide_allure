@@ -18,6 +18,12 @@ public abstract class BasePage {
         return this;
     }
 
+    protected void checkThatHeaderButtonEnabled(String buttonName) {
+        ElementsCollection tabBarButtons = $$x("//mvid-tap-bar/descendant::mvid-header-icon");
+        tabBarButtons = $$x("//mvid-tap-bar/descendant::mvid-header-icon");
+        tabBarButtons.find(text(buttonName)).shouldBe(buttonHeaderExistsAndEnabled);
+    }
+
     public <T extends BasePage> T checkThatHeaderButtonEnabled(String buttonName, Class<T> pageObjectClass) {
         ElementsCollection tabBarButtons = $$x("//mvid-tap-bar/descendant::mvid-header-icon");
         tabBarButtons = $$x("//mvid-tap-bar/descendant::mvid-header-icon");
