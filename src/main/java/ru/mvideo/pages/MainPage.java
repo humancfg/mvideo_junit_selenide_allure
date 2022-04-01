@@ -26,6 +26,7 @@ public class MainPage {
     private ElementsCollection blocksCollection;
 
 
+
     public static Map<String, Integer> mostViewedProductsMap = new LinkedHashMap<>();
     public static List<String> mostViewedNamesList = new LinkedList<>();
     public static List<Integer> mostViewedPricesList = new LinkedList<>();

@@ -6,10 +6,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
 
+@Order(6)
 public class FavouritesPageTests extends BaseTest {
 
     @Test
-    @DisplayName("Проверка добавления товаров в список сравнения")
+    @DisplayName("Проверка добавления товаров в список избранного")
     public void addProductsToFavouritesTest() {
         assertHeaderMainPageSteps.assertThatInputSearchFieldIsVisible();
         headerMainPageSteps.fillSearchFieldAndClickSearchButton("apple");

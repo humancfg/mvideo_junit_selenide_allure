@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.junit.jupiter.api.parallel.Isolated;
-@Isolated
-@Execution(ExecutionMode.CONCURRENT)
+
+@Order(1)
 public class HeaderMainPageTests extends BaseTest {
 
     @Test

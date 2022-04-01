@@ -28,6 +28,17 @@ public class HeaderMainPage {
     private SelenideElement inputSearchField;
     @FindBy(xpath = "//header//mvid-icon[@type='search']")
     private SelenideElement searchButton;
+    @FindBy(xpath = "//mvid-header//span[contains(@class, 'location-text')]")
+    private SelenideElement locationButton;
+
+    public void locationButtonHave(String expectedText) {
+        locationButton.shouldHave(text(expectedText));
+    }
+
+
+    public void clickLocationButton() {
+        locationButton.shouldBe(visible).click();
+    }
 
     public void clickComparisonButton() {
         comparisonButton.shouldBe(MVConditions.buttonHeaderExistsAndEnabled()).click();

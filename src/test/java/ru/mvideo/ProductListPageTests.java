@@ -3,9 +3,8 @@ package ru.mvideo;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.parallel.Execution;
-import org.junit.jupiter.api.parallel.ExecutionMode;
 
+@Order(3)
 public class ProductListPageTests extends BaseTest {
 
     @Test
