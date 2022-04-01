@@ -59,6 +59,13 @@
             <version>${allure.junit5.version}</version>
         </dependency>
 
+        <!-- Для пропертей -->
+        <dependency>
+            <groupId>org.aeonbits.owner</groupId>
+            <artifactId>owner</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+
     </dependencies>
 
     <build>

@@ -1,42 +1,52 @@
 package ru.mvideo;
 
-import io.qameta.allure.Description;
+import assertions.MVAssertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.parallel.Execution;
-import org.junit.jupiter.api.parallel.ExecutionMode;
-import org.junit.jupiter.api.parallel.Isolated;
+import pages.ru.mvideo.CartPage;
+import pages.ru.mvideo.MainPage;
+import pages.ru.mvideo.MostViewedBlock;
 
-@Isolated
+import static helpers.Buttons.cartButton;
+import static helpers.MVCollections.ADD_TO_CART_BUTTON;
+import static properties.TestData.propsUrl;
+
+@Order(2)
+@DisplayName("Тесты Корзины")
 public class CartPageTests extends BaseTest {
 
     @Test
     @Order(1)
     @DisplayName("Переход в корзину")
-    @Execution(ExecutionMode.CONCURRENT)
-    public void goToCartPageTest() {
-        assertMainPageSteps.assertThatDayProductsBlockIsVisible();
-        mainPageSteps.clickAddToCartButtonDayProduct();
-        headerMainPageSteps.clickCartButton();
-        assertDriverManagerSteps.assertThatUrlContains("/cart");
-        assertCartPageSteps.assertThatCartPageTitleEquals("Моя корзина");
-        assertCartPageSteps.assertThatCardOrdersIsVisible();
-        assertCartPageSteps.assertThatCartOrderNameEqualsAddedDayProductName();
-        assertCartPageSteps.assertThatGoToCheckoutButtonIsVisible();
-        assertCartPageSteps.assertThatRightBlockHaveExact("В корзине 1 товар");
-        assertCartPageSteps.assertThatCartOrderPriceEqualsAddedDayProductPrice();
+    void goToCartPageTest() {
+        mainPage.getDayProductsBlock()
+                .checkThatDayProductsVisible()
+                .collectDayProductInfo()
+                .clickFirstDayProductToCartButton(MainPage.class)
+                .checkThatCartButtonEnabled(cartButton)
+                .clickButton(cartButton, CartPage.class)
+                .checkThatCartPageHeaderTitleContains("Моя корзина")
+                .checkThatGoToCheckoutButtonVisible()
+                .checkThatOrdersVisible()
+                .checkThatCostLineTitleContains("В корзине 1 товар")
+                .collectCartPageProductsInfo()
+                .checkThatUrlContains(propsUrl.cartPageUri());
+
+        MVAssertions.assertThatMapsAreEquals();
     }
 
     @Test
     @Order(2)
     @DisplayName("Добавление в корзину два товара")
-    @Description("Тут должно быть описание")
-    public void addToCartTwoProductTest() {
-        assertMainPageSteps.assertThatMostViewedBlockIsVisible();
-        mainPageSteps.clickAddToCartOnFirstTwoMostViewedProducts();
-        headerMainPageSteps.clickCartButton();
-        assertCartPageSteps.assertThatCartOrdersNamesEqualsAddedMostViewedNames();
-        assertCartPageSteps.assertThatCartCostPriceEqualsAddedMostViewedPrices();
+    void addToCartTwoProducts() {
+        mainPage.scrollEachBlock(MostViewedBlock.class)
+                .checkThatMostViewedBlockVisible()
+                .collectMostViewedProductsToMap()
+                .clickButton(ADD_TO_CART_BUTTON)
+                .checkThatHeaderButtonBubbleHave("1", cartButton, MostViewedBlock.class)
+                .clickButton(ADD_TO_CART_BUTTON)
+                .checkThatHeaderButtonBubbleHave("2", cartButton, MainPage.class)
+                .clickButton(cartButton, CartPage.class);
     }
 }

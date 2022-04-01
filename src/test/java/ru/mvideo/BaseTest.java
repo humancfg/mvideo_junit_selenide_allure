@@ -1,49 +1,24 @@
 package ru.mvideo;
 
-import driver.DriverManager;
+import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import steps.*;
-import steps.assertions.*;
+import pages.ru.mvideo.MainPage;
+
+import static properties.TestData.propsUrl;
 
 public class BaseTest {
-    MainPageSteps mainPageSteps;
-    HeaderMainPageSteps headerMainPageSteps;
-    ProductListPageSteps productListPageSteps;
-    ProductComparisonPageSteps productComparisonPageSteps;
-
-    AssertMainPageSteps assertMainPageSteps;
-    AssertCartPageSteps assertCartPageSteps;
-    AssertDriverManagerSteps assertDriverManagerSteps;
-    AssertHeaderMainPageSteps assertHeaderMainPageSteps;
-    AssertFavouritesPageSteps assertFavouritesPageSteps;
-    AssertProductListPageSteps assertProductListPageSteps;
-    AssertAuthModalWindowPageSteps assertAuthModalWindowPageSteps;
-    AssertProductComparisonPageSteps assertProductComparisonPageSteps;
-    AssertComparisonWidgetDiscountsSteps assertComparisonWidgetDiscountsSteps;
+    MainPage mainPage;
 
     @BeforeEach
     public void beforeEach() {
-        DriverManagerSteps.openUrl("https://www.mvideo.ru");
-
-        mainPageSteps = new MainPageSteps();
-        headerMainPageSteps = new HeaderMainPageSteps();
-        productListPageSteps = new ProductListPageSteps();
-        productComparisonPageSteps = new ProductComparisonPageSteps();
-
-        assertMainPageSteps = new AssertMainPageSteps();
-        assertCartPageSteps = new AssertCartPageSteps();
-        assertDriverManagerSteps = new AssertDriverManagerSteps();
-        assertHeaderMainPageSteps = new AssertHeaderMainPageSteps();
-        assertFavouritesPageSteps = new AssertFavouritesPageSteps();
-        assertProductListPageSteps = new AssertProductListPageSteps();
-        assertAuthModalWindowPageSteps = new AssertAuthModalWindowPageSteps();
-        assertProductComparisonPageSteps = new AssertProductComparisonPageSteps();
-        assertComparisonWidgetDiscountsSteps = new AssertComparisonWidgetDiscountsSteps();
+        mainPage = new MainPage();
+        Selenide.open(propsUrl.baseUrlMVideo());
+//        Configuration.timeout = propsDriver.configurationTimeout();
     }
 
     @AfterEach
     public void afterEach() {
-        DriverManager.closeDriver();
+        Selenide.closeWebDriver();
     }
 }
