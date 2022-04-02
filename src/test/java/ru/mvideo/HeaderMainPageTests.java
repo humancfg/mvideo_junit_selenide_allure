@@ -26,7 +26,7 @@ public class HeaderMainPageTests extends BaseTest {
     @Order(2)
     @DisplayName("Проверка активации кнопки корзины")
     public void activateCartButtonTest() {
-        assertHeaderMainPageSteps.assertThatInputSearchFieldIsVisible();
+//        assertHeaderMainPageSteps.assertThatInputSearchFieldIsVisible();
         assertMainPageSteps.assertThatDayProductsBlockIsVisible();
         mainPageSteps.clickAddToCartButtonDayProduct();
         assertHeaderMainPageSteps.assertThatCartButtonBecomeEnabled();

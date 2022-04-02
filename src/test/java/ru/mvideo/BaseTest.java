@@ -5,10 +5,14 @@ import com.codeborne.selenide.Selenide;
 import driver.DriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import ru.mvideo.pages.CityModal;
 import ru.mvideo.pages.HeaderMainPage;
 import steps.*;
 import steps.assertions.*;
+
+import static com.codeborne.selenide.Configuration.browserCapabilities;
 
 public class BaseTest {
     HeaderMainPage headerMainPage;
@@ -30,9 +34,8 @@ public class BaseTest {
 
     @BeforeEach
     public void beforeEach() {
-        Configuration.browser="chrome";
-        Configuration.headless=true;
         DriverManagerSteps.openUrl("https://www.mvideo.ru");
+
         headerMainPage = Selenide.page(new HeaderMainPage());
         mainPageSteps = new MainPageSteps();
         headerMainPageSteps = new HeaderMainPageSteps();
