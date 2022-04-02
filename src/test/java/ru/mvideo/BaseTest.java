@@ -31,6 +31,7 @@ public class BaseTest {
 
     @BeforeEach
     public void beforeEach() {
+        Configuration.browser="chrome";
         Configuration.browserSize = "1920x1080";
         DriverManagerSteps.openUrl("https://www.mvideo.ru");
 
