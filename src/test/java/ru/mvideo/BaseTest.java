@@ -1,5 +1,6 @@
 package ru.mvideo;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import driver.DriverManager;
 import org.junit.jupiter.api.AfterEach;
@@ -30,6 +31,7 @@ public class BaseTest {
 
     @BeforeEach
     public void beforeEach() {
+        Configuration.browserSize = "1920x1080"
         DriverManagerSteps.openUrl("https://www.mvideo.ru");
 
         cityModal = Selenide.page(new CityModal());
