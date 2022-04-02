@@ -31,7 +31,7 @@ public class BaseTest {
 
     @BeforeEach
     public void beforeEach() {
-        Configuration.browserSize = "1920x1080"
+        Configuration.browserSize = "1920x1080";
         DriverManagerSteps.openUrl("https://www.mvideo.ru");
 
         cityModal = Selenide.page(new CityModal());
