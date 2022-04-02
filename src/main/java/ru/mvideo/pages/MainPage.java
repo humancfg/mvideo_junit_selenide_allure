@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.visible;
+import static helpers.MVConditions.existAndVisible;
 
 public class MainPage {
     @FindBy(xpath = "//mvid-day-products-block")
@@ -24,8 +25,6 @@ public class MainPage {
     private SelenideElement mostViewedBlock;
     @FindBy(xpath = "//mvid-simple-product-collection")
     private ElementsCollection blocksCollection;
-
-
 
     public static Map<String, Integer> mostViewedProductsMap = new LinkedHashMap<>();
     public static List<String> mostViewedNamesList = new LinkedList<>();
@@ -49,7 +48,7 @@ public class MainPage {
     }
 
     public boolean isMostViewedBlockVisible() {
-        return mostViewedBlock.is(MVConditions.existAndVisible());
+        return mostViewedBlock.is(existAndVisible);
     }
 
     public void scrollToMostViewed() {
@@ -61,7 +60,7 @@ public class MainPage {
     }
 
     public boolean isDayProductsBlockVisible() {
-        return dayProductsBlock.is(MVConditions.existAndVisible());
+        return dayProductsBlock.is(existAndVisible);
     }
 
     public void dayProductsBlockShouldBeVisible() {
@@ -75,6 +74,7 @@ public class MainPage {
     public void saveDayProductPrice() {
         By mainProduct = By.xpath(".//mvid-day-product[contains(@class,'main')]");
         By mainPrice = By.xpath(".//span[@class= 'price__main-value']");
+
         dayProductPrice = dayProductsBlock
                 .find(mainProduct)
                 .find(mainPrice)
@@ -85,6 +85,7 @@ public class MainPage {
     public void saveDayProductName() {
         By mainProduct = By.xpath(".//mvid-day-product[contains(@class,'main')]");
         By mainTitle = By.xpath(".//div[contains(@class, 'title')]/a");
+
         dayProductName = dayProductsBlock
                 .find(mainProduct)
                 .find(mainTitle)
@@ -95,6 +96,7 @@ public class MainPage {
     public void collectDayProductsMap() {
         collectDayProductsNamesList();
         collectDayProductsPricesList();
+
         for (String name : dayProductsNamesList) {
             for (Integer price : dayProductsPricesList) {
                 dayProductsMap.put(name, price);
@@ -104,6 +106,7 @@ public class MainPage {
 
     public void collectDayProductsNamesList() {
         By dayProductsNames = By.xpath(".//div[contains(@class, 'title')]/a");
+
         dayProductsNamesList = dayProductsBlock.findAll(dayProductsNames)
                 .stream()
                 .map(element -> element.shouldBe(visible)
@@ -115,6 +118,7 @@ public class MainPage {
 
     public void collectDayProductsPricesList() {
         By dayProductsPrices = By.xpath(".//mvid-day-product//span[@class='price__main-value']");
+
         dayProductsPricesList = dayProductsBlock
                 .findAll(dayProductsPrices)
                 .stream()
@@ -128,6 +132,7 @@ public class MainPage {
     public void collectMostViewedProductsMap() {
         collectMostViewedNamesList();
         collectMostViewedPricesList();
+
         for (String name : mostViewedNamesList) {
             for (Integer price : mostViewedPricesList) {
                 mostViewedProductsMap.put(name, price);
@@ -137,6 +142,7 @@ public class MainPage {
 
     public void collectMostViewedNamesList() {
         By mostViewedNames = By.xpath(".//a/div[text()]");
+
         mostViewedNamesList = mostViewedBlock
                 .findAll(mostViewedNames)
                 .stream()
@@ -147,6 +153,7 @@ public class MainPage {
 
     public void collectMostViewedPricesList() {
         By mostViewedPrices = By.xpath(".//mvid-price-2//span[@class='price__main-value']");
+
         mostViewedPricesList = mostViewedBlock
                 .findAll(mostViewedPrices)
                 .stream()

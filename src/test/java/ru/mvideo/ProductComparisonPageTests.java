@@ -7,6 +7,7 @@ import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
 
 @Order(5)
+@DisplayName("Страница \"Сравнение товаров\"")
 public class ProductComparisonPageTests extends BaseTest{
 
     @Test

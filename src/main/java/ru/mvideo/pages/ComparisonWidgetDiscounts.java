@@ -13,7 +13,7 @@ public class ComparisonWidgetDiscounts{
     private SelenideElement widgetCloseButton;
 
     public boolean isWidgetVisible() {
-        return widgetDiscounts.is(existAndVisible());
+        return widgetDiscounts.is(existAndVisible);
     }
 
     public void widgetDiscountsShouldBeDisappear() {

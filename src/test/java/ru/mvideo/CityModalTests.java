@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 @Order(7)
+@DisplayName("Модальное окно выбора локации")
 public class CityModalTests extends BaseTest {
     @Test
     @Order(1)

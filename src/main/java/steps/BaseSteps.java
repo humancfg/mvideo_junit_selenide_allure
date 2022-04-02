@@ -5,7 +5,6 @@ import ru.mvideo.pages.*;
 
 public class BaseSteps {
     protected HeaderMainPage headerMainPage = Selenide.page(new HeaderMainPage());
-    protected MainPage mainPage = Selenide.page(new MainPage());
     protected CartPage cartPage = Selenide.page(new CartPage());
     protected ProductListPage productListPage = Selenide.page(new ProductListPage());
     protected AuthModalWindowPage authModalWindowPage = Selenide.page(new AuthModalWindowPage());

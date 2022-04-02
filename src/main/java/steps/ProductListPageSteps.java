@@ -1,8 +1,6 @@
 package steps;
 
-import helpers.Scroll;
 import io.qameta.allure.Step;
-import ru.mvideo.pages.ProductListPage;
 
 public class ProductListPageSteps extends BaseSteps {
 
@@ -26,7 +24,9 @@ public class ProductListPageSteps extends BaseSteps {
 
     @Step("Проскролить каждый элемент в поисковой выдаче")
     public void scrollEachResultSearchElement() {
+        productListPage.skeletonLoaderShouldBeDisappear();
         productListPage.scrollToPromoConfiguratorBlock();
+        productListPage.scrollEachCarousel();
         productListPage.scrollEachProductName();
         productListPage.productsNamesShouldBeVisible();
     }
@@ -41,7 +41,7 @@ public class ProductListPageSteps extends BaseSteps {
     public void selectVariationSortDropDownElement(String elementName) {
         productListPage.clickOnVariationSortDropDownElement(elementName);
         productListPage.skeletonLoaderShouldBeDisappear();
-        productListPage.scrollToPromoConfiguratorBlock();
+        productListPage.scrollEachCarousel();
         productListPage.saveToListProductsPricesSearchResults();
     }
 }

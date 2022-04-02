@@ -15,14 +15,19 @@ import static helpers.MVConditions.existAndVisible;
 public class CartPage {
     @FindBy(xpath = "//span[text()='Моя корзина']")
     SelenideElement cartPageTitle;
+
     @FindBy(xpath = "//span[contains(@class, 'c-cart-item__price')]")
     ElementsCollection ordersPricesCollection;
+
     @FindBy(xpath = "//a[contains(@class, 'c-cart-item__title')]")
     ElementsCollection ordersNamesCollection;
+
     @FindBy(xpath = "//div[@class= 'c-cart__order']")
     ElementsCollection cartOrders;
+
     @FindBy(xpath = "//input[@value='Перейти к оформлению']")
     SelenideElement goToCheckoutInputButton;
+
     @FindBy(xpath = "//div[@id='ui-id-1']")
     SelenideElement rightCostBlock;
 
@@ -50,11 +55,11 @@ public class CartPage {
     }
 
     public boolean checkoutBlockIsVisible() {
-        return rightCostBlock.is(existAndVisible());
+        return rightCostBlock.is(existAndVisible);
     }
 
     public boolean isGoToCheckoutButtonIsVisible() {
-        return goToCheckoutInputButton.is(existAndVisible());
+        return goToCheckoutInputButton.is(existAndVisible);
     }
 
     public void cartPageTitleShouldBeVisible() {
@@ -65,7 +70,7 @@ public class CartPage {
         return cartOrders.stream()
                 .allMatch(element -> element
                         .scrollIntoView(Scroll.center)
-                        .is(existAndVisible()));
+                        .is(existAndVisible));
     }
 
     public String getCartPageTitleText() {

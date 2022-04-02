@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 @Order(3)
+@DisplayName("Поиск")
 public class ProductListPageTests extends BaseTest {
 
     @Test

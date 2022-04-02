@@ -32,9 +32,7 @@ public class HeaderMainPageSteps extends BaseSteps {
     public void fillSearchFieldAndClickSearchButton(String queryText) {
         headerMainPage.fillInputSearchField(queryText);
         headerMainPage.clickSearchButton();
-        productListPage.tabsSidePanelBottomShouldBeVisible();
+        headerMainPage.tabsSidePanelBottomShouldBeVisible();
     }
-
-
 
 }

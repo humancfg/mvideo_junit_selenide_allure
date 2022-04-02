@@ -1,13 +1,15 @@
 package ru.mvideo.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import helpers.MVConditions;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
+import static helpers.MVConditions.*;
 
 public class HeaderMainPage {
+    @FindBy(xpath = "//mvid-slide-panel")
+    private SelenideElement tabsSidePanelBottom;
     @FindBy(xpath = "//mvid-header-icon//a[@title='Статус заказа']")
     private SelenideElement statusOrderButton;
     @FindBy(xpath = "//mvid-header-icon[@tooltiptype='profile']")
@@ -31,6 +33,11 @@ public class HeaderMainPage {
     @FindBy(xpath = "//mvid-header//span[contains(@class, 'location-text')]")
     private SelenideElement locationButton;
 
+    public void tabsSidePanelBottomShouldBeVisible() {
+        tabsSidePanelBottom
+                .shouldBe(existAndVisible);
+    }
+
     public void locationButtonHave(String expectedText) {
         locationButton.shouldHave(text(expectedText));
     }
@@ -41,7 +48,7 @@ public class HeaderMainPage {
     }
 
     public void clickComparisonButton() {
-        comparisonButton.shouldBe(MVConditions.buttonHeaderExistsAndEnabled()).click();
+        comparisonButton.shouldBe(buttonHeaderExistsAndEnabled).click();
     }
 
     public void hoverComparisonButton() {
@@ -56,7 +63,7 @@ public class HeaderMainPage {
 
     public void clickFavButton() {
         favButton
-                .shouldBe(MVConditions.buttonHeaderExistsAndEnabled()).click();
+                .shouldBe(buttonHeaderExistsAndEnabled).click();
     }
 
     public void hoverFavButton() {
@@ -75,7 +82,7 @@ public class HeaderMainPage {
 
     public void favButtonShouldBeEnabled() {
         favButton
-                .shouldBe(MVConditions.buttonHeaderExistsAndEnabled());
+                .shouldBe(buttonHeaderExistsAndEnabled);
     }
 
 
@@ -92,7 +99,7 @@ public class HeaderMainPage {
     }
 
     public boolean isInputSearchFieldVisible() {
-        return inputSearchField.is(MVConditions.existAndVisible());
+        return inputSearchField.shouldBe(visible).is(existAndVisible);
     }
 
     public String getCartBubbleNumber() {
@@ -108,40 +115,40 @@ public class HeaderMainPage {
     }
 
     public void cartButtonShouldBeEnabled() {
-        cartButton.shouldBe(MVConditions.buttonHeaderExistsAndEnabled());
+        cartButton.shouldBe(buttonHeaderExistsAndEnabled);
     }
 
     public boolean isStatusOrderButtonEnabled() {
-        return statusOrderButton.is(MVConditions.buttonHeaderExistsAndEnabled());
+        return statusOrderButton.is(buttonHeaderExistsAndEnabled);
     }
 
     public boolean isLoginButtonEnabled() {
-        return loginButton.is(MVConditions.buttonHeaderExistsAndEnabled());
+        return loginButton.is(buttonHeaderExistsAndEnabled);
     }
 
     public boolean isComparisonButtonDisabled() {
-        return comparisonButton.is(MVConditions.buttonHeaderExistsAndDisabled());
+        return comparisonButton.is(buttonHeaderExistsAndDisabled);
     }
 
     public void comparisonButtonShouldBeEnabled() {
-        comparisonButton.shouldBe(MVConditions.buttonHeaderExistsAndEnabled());
+        comparisonButton.shouldBe(buttonHeaderExistsAndEnabled);
     }
 
     public boolean isComparisonButtonEnabled() {
-        return comparisonButton.is(MVConditions.buttonHeaderExistsAndEnabled());
+        return comparisonButton.is(buttonHeaderExistsAndEnabled);
     }
 
     public boolean isFavButtonDisabled() {
-        return favButton.is(MVConditions.buttonHeaderExistsAndDisabled());
+        return favButton.is(buttonHeaderExistsAndDisabled);
     }
 
     public boolean isCartButtonDisabled() {
-        return cartButton.is(MVConditions.buttonHeaderExistsAndDisabled());
+        return cartButton.is(buttonHeaderExistsAndDisabled);
     }
 
     public boolean isCartButtonEnabled() {
         cartButtonShouldBeEnabled();
-        return cartButton.is(MVConditions.buttonHeaderExistsAndEnabled());
+        return cartButton.is(buttonHeaderExistsAndEnabled);
     }
 
 

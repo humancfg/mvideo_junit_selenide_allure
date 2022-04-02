@@ -1,9 +1,13 @@
 package steps;
 
+import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
+import ru.mvideo.pages.MainPage;
 
-public class MainPageSteps extends BaseSteps{
+public class MainPageSteps extends BaseSteps {
+
+    private MainPage mainPage = Selenide.page(new MainPage());
 
     @Step("Нажать у товара дня на кнопку \"В корзину\"")
     public void clickAddToCartButtonDayProduct() {

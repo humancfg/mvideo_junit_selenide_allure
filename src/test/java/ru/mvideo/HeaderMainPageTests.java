@@ -8,6 +8,7 @@ import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.junit.jupiter.api.parallel.Isolated;
 
 @Order(1)
+@DisplayName("Шапка главной страницы")
 public class HeaderMainPageTests extends BaseTest {
 
     @Test
@@ -25,6 +26,7 @@ public class HeaderMainPageTests extends BaseTest {
     @Order(2)
     @DisplayName("Проверка активации кнопки корзины")
     public void activateCartButtonTest() {
+        assertHeaderMainPageSteps.assertThatInputSearchFieldIsVisible();
         assertMainPageSteps.assertThatDayProductsBlockIsVisible();
         mainPageSteps.clickAddToCartButtonDayProduct();
         assertHeaderMainPageSteps.assertThatCartButtonBecomeEnabled();

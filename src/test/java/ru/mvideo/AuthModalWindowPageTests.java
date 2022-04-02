@@ -7,6 +7,7 @@ import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
 
 @Order(4)
+@DisplayName("Модальное окно авторизации")
 public class AuthModalWindowPageTests extends BaseTest {
 
     @Test

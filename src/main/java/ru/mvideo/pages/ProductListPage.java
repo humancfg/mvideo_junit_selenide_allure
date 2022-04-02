@@ -3,7 +3,6 @@ package ru.mvideo.pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import helpers.MVConditions;
 import helpers.Scroll;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
@@ -14,12 +13,11 @@ import java.util.List;
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$$x;
+import static helpers.MVConditions.existAndVisible;
 import static helpers.Scroll.center;
 import static helpers.Scroll.end;
 
 public class ProductListPage {
-    @FindBy(xpath = "//div[@class='tabs']")
-    private SelenideElement tabsSidePanelBottom;
     @FindBy(xpath = "//div[contains(@class, 'product-cards-row')]//a[contains(@class, 'product-title__text')]")
     private ElementsCollection productsNames;
     @FindBy(xpath = "//mvid-product-list-controls//div[@class='dropdown__title']/span")
@@ -32,11 +30,12 @@ public class ProductListPage {
     private ElementsCollection productCardsPrices;
     @FindBy(xpath = "//div[@class='skeleton']")
     private SelenideElement skeletonLoader;
+    @FindBy(xpath = "//main//child::div[contains(@class, 'carousel')]")
+    private ElementsCollection carousels;
     @FindBy(xpath = "//mvid-promo-configurator")
     private SelenideElement promoConfigurator;
     @FindBy(xpath = "//mvid-product-cards-row//button[@title='Добавить в сравнение']")
     private SelenideElement firstComparisonButton;
-//    @FindBy(xpath = "//mvid-product-cards-row//button[@title='Добавить в избранное']")
     @FindBy(xpath = "//mvid-product-cards-row//button[@title='Добавить в избранное']/mvid-icon[@type='love']")
     private ElementsCollection favButtons;
     @FindBy(xpath = "//mvid-product-cards-row/child::div")
@@ -60,8 +59,8 @@ public class ProductListPage {
 
     public void clickComparisonButtonOnFirstVisibleProduct() {
         firstComparisonButton
-                .shouldBe(visible)
                 .scrollIntoView(center)
+                .shouldBe(visible)
                 .click();
     }
 
@@ -103,7 +102,7 @@ public class ProductListPage {
     }
 
     public void variationSortDropDownShouldBeVisible() {
-        variationSortDropDown.shouldBe(MVConditions.existAndVisible());
+        variationSortDropDown.shouldBe(existAndVisible);
     }
 
     public void clickVariationSortButton() {
@@ -120,9 +119,7 @@ public class ProductListPage {
                                 .contains(word));
     }
 
-    public void tabsSidePanelBottomShouldBeVisible() {
-        tabsSidePanelBottom.shouldBe(MVConditions.existAndVisible());
-    }
+
 
     // подгружает каждый элемент
     public void scrollEachProductName() {
@@ -138,10 +135,14 @@ public class ProductListPage {
                 .scrollIntoView(center);
     }
 
+    public void scrollEachCarousel() {
+        carousels.forEach(carousel-> carousel.scrollIntoView(center).shouldBe(visible));
+    }
+
 
     public void productsNamesShouldBeVisible() {
         productsNames.forEach(element ->
-                element.shouldBe(MVConditions.existAndVisible()));
+                element.shouldBe(existAndVisible));
     }
 
 

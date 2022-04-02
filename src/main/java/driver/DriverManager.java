@@ -13,6 +13,8 @@ public class DriverManager {
         return WebDriverRunner.getWebDriver().getCurrentUrl();
     }
 
+
+
     public static void closeDriver() {
         Selenide.closeWebDriver();
     }

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
 
 @Order(6)
+@DisplayName("Страница \"Избранное\"")
 public class FavouritesPageTests extends BaseTest {
 
     @Test

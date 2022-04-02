@@ -5,12 +5,14 @@ import com.codeborne.selenide.SelenideElement;
 import helpers.MVConditions;
 import org.openqa.selenium.support.FindBy;
 
+import static helpers.MVConditions.existAndVisible;
+
 public class ProductComparisonPage {
     @FindBy(xpath = "//div[@class='c-compare-head-title']/h1")
     private SelenideElement comparisonTitle;
 
     public boolean comparisonTitleIsVisible() {
-        return comparisonTitle.is(MVConditions.existAndVisible());
+        return comparisonTitle.is(existAndVisible);
     }
 
     public void comparisonTitleShouldBeVisible() {
