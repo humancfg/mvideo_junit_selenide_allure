@@ -11,7 +11,6 @@ import steps.*;
 import steps.assertions.*;
 
 public class BaseTest {
-    CityModal cityModal;
     HeaderMainPage headerMainPage;
 
     MainPageSteps mainPageSteps;
@@ -32,10 +31,9 @@ public class BaseTest {
     @BeforeEach
     public void beforeEach() {
         Configuration.browser="chrome";
+        Configuration.headless=true;
         Configuration.browserSize = "1920x1080";
         DriverManagerSteps.openUrl("https://www.mvideo.ru");
-
-        cityModal = Selenide.page(new CityModal());
         headerMainPage = Selenide.page(new HeaderMainPage());
         mainPageSteps = new MainPageSteps();
         headerMainPageSteps = new HeaderMainPageSteps();
