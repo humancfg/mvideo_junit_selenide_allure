@@ -1,8 +1,11 @@
 package steps;
 
 import io.qameta.allure.Step;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.TestMethodOrder;
 
 public class HeaderMainPageSteps extends BaseSteps {
+
 
     @Step("Нажать на кнопку \"Войти\"")
     public void clickLoginButton() {

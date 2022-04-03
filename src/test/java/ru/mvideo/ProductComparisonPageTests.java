@@ -1,13 +1,12 @@
 package ru.mvideo;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
 
 @Order(5)
 @DisplayName("Страница \"Сравнение товаров\"")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ProductComparisonPageTests extends BaseTest{
 
     @Test

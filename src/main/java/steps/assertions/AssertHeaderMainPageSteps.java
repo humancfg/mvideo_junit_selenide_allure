@@ -4,7 +4,9 @@ import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
 import steps.BaseSteps;
 
+
 public class AssertHeaderMainPageSteps extends BaseSteps {
+
 
     @Step("Проверка: В шапке отображается строка поиска товаров")
     public void assertThatInputSearchFieldIsVisible() {

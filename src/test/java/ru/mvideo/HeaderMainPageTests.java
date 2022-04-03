@@ -1,14 +1,11 @@
 package ru.mvideo;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.parallel.Execution;
-import org.junit.jupiter.api.parallel.ExecutionMode;
-import org.junit.jupiter.api.parallel.Isolated;
+import org.junit.Rule;
+import org.junit.jupiter.api.*;
+import org.junit.rules.TestRule;
 
-@Order(1)
 @DisplayName("Шапка главной страницы")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class HeaderMainPageTests extends BaseTest {
 
     @Test
@@ -30,6 +27,7 @@ public class HeaderMainPageTests extends BaseTest {
         assertMainPageSteps.assertThatDayProductsBlockIsVisible();
         mainPageSteps.clickAddToCartButtonDayProduct();
         assertHeaderMainPageSteps.assertThatCartButtonBecomeEnabled();
+//        mainPageSteps.cartShouldHaveText("1");
         assertHeaderMainPageSteps.assertThatCartBubbleHave("1");
     }
 }

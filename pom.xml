@@ -60,6 +60,12 @@
             <version>${allure.junit5.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-selenide</artifactId>
+            <version>2.13.6</version>
+        </dependency>
+
     </dependencies>
 
     <build>

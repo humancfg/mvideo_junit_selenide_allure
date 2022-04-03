@@ -1,6 +1,8 @@
 package ru.mvideo.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.logevents.LogEvent;
+import com.codeborne.selenide.logevents.LogEventListener;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Condition.text;
@@ -104,6 +106,10 @@ public class HeaderMainPage {
 
     public String getCartBubbleNumber() {
         return cartBubble.getText();
+    }
+
+    public void cartBubbleShouldHaveText(String expected) {
+       cartBubble.shouldHave(text(expected));
     }
 
     public void clickCartButton() {

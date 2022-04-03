@@ -1,19 +1,17 @@
 package ru.mvideo;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
 
 @Order(2)
 @DisplayName("Страница \"Моя корзина\"")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class CartPageTests extends BaseTest {
 
     @Test
     @Order(1)
     @DisplayName("Переход в корзину")
-    @Execution(ExecutionMode.CONCURRENT)
     public void goToCartPageTest() {
         assertMainPageSteps.assertThatDayProductsBlockIsVisible();
         mainPageSteps.clickAddToCartButtonDayProduct();

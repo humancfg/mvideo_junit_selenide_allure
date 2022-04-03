@@ -1,6 +1,8 @@
 package steps;
 
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import ru.mvideo.pages.*;
 
 public class BaseSteps {

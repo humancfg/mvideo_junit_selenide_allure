@@ -1,20 +1,18 @@
 package ru.mvideo;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import driver.DriverManager;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import ru.mvideo.pages.CityModal;
 import ru.mvideo.pages.HeaderMainPage;
 import steps.*;
 import steps.assertions.*;
 
-import static com.codeborne.selenide.Configuration.browserCapabilities;
-
 public class BaseTest {
+
     HeaderMainPage headerMainPage;
 
     MainPageSteps mainPageSteps;
@@ -31,6 +29,14 @@ public class BaseTest {
     AssertAuthModalWindowPageSteps assertAuthModalWindowPageSteps;
     AssertProductComparisonPageSteps assertProductComparisonPageSteps;
     AssertComparisonWidgetDiscountsSteps assertComparisonWidgetDiscountsSteps;
+
+    @BeforeAll
+    static void setUp() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
+                .screenshots(true)
+                .savePageSource(false)
+                .includeSelenideSteps(true));
+    }
 
     @BeforeEach
     public void beforeEach() {

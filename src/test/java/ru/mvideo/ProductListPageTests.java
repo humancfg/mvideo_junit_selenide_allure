@@ -1,11 +1,10 @@
 package ru.mvideo;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 @Order(3)
 @DisplayName("Поиск")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ProductListPageTests extends BaseTest {
 
     @Test

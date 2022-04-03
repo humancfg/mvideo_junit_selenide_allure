@@ -1,13 +1,12 @@
 package ru.mvideo;
 
 import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import ru.mvideo.pages.CityModal;
 
 @Order(7)
 @DisplayName("Модальное окно выбора локации")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class CityModalTests extends BaseTest {
     private CityModal cityModal = Selenide.page(new CityModal());
 

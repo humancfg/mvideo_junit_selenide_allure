@@ -1,13 +1,12 @@
 package ru.mvideo;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
 
 @Order(6)
 @DisplayName("Страница \"Избранное\"")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class FavouritesPageTests extends BaseTest {
 
     @Test
